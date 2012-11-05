@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>sortablejs example</title>
+  <style type="text/css">
+    .sortable {
+      text-decoration: underline;
+    }
+
+    .sortable:hover {
+      cursor: pointer;
+    }
+
+    .sortable.ascending:after {
+      content: url(../img/sort-asc.png);
+      padding-left: 2px;
+    }
+
+    .sortable.descending:after {
+      content: url(../img/sort-desc.png);
+      padding-left: 2px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th class="sortable">First Name</td>
+        <th class="sortable">Last Name</td>
+        <th class="sortable">Date of Birth</td>
+        <th>Options</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alex</td>
+        <td>Bloggs</td>
+        <td data-sortable-key="19920511">11-05-1992</td>
+        <td>Delete</td>
+      </tr>
+      <tr>
+        <td>Robert</td>
+        <td>Smith</td>
+        <td data-sortable-key="19871195">05-11-1987</td>
+        <td>Delete</td>
+      </tr>
+      <tr>
+        <td>Fred</td>
+        <td>Jones</td>
+        <td data-sortable-key="19600812">12-08-1960</td>
+        <td>Delete</td>
+      </tr>
+      <tr>
+        <td>Jane</td>
+        <td>Doe</td>
+        <td data-sortable-key="19721005">05-10-1972</td>
+        <td>Delete</td>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td data-sortable-key="19430301">01-03-1943</td>
+        <td>Delete</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="../js/sortable.js"></script>
+</body>
+</htm>
