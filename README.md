@@ -9,10 +9,11 @@ Dependancies
 
 Usage
 -----
-- Simply add the class "sortable" to any table column you wish to be sortable.
-- By default sortablejs will use the text content of the td to sort by (alphabetical) if you wish to use a different value or the content of the td is not simple,  set the attribute 'data-sortable-key'.
+- Simply add the class "sortable" to any table column heading you wish to be sortable.
+- By default sortablejs will use the text content of the td to sort by (alphabetical) if you wish to use a different value or the content of the td is not simple, set the attribute 'data-sortable-key' on the td. This attribute will always take presedence over text content.
 - Ensure that you use full HTML tables including thead, th and tbody.
 - Implement the appropriate CSS classes to give the table headings a sortable look-and-feel.
+- Please check out the examples.
 
 Example
 -------

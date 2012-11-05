@@ -35,7 +35,11 @@ var sortablejs = {
 
       $(this).parents('table').find('td').each(function() {
         if ($(this).index() == sortableIndex) {
-          listContent.push($(this).text().toLowerCase());
+          if ($(this).attr(SORTABLE_DATA_ATTR_NAME) == undefined) {
+            listContent.push($(this).text().toLowerCase());  
+          } else {
+            listContent.push($(this).attr(SORTABLE_DATA_ATTR_NAME).toLowerCase());
+          }
         }
       });
 
@@ -75,7 +79,7 @@ var sortablejs = {
         sortablejs.resetSortedClasses($(this));
       }
     });
-    var sortedList = sortablejs.sortableColumns[sortableId].sort();
+    var sortedList = sortablejs.sortableColumns[sortableId].slice().sort();
     sortablejs.orderTable(table, sortedList);
   }
 
@@ -88,7 +92,7 @@ var sortablejs = {
         sortablejs.resetSortedClasses($(this));
       }
     });
-    var sortedList = sortablejs.sortableColumns[sortableId].sort().reverse();
+    var sortedList = sortablejs.sortableColumns[sortableId].slice().sort().reverse();
     sortablejs.orderTable(table, sortedList);
   }
 
@@ -96,9 +100,12 @@ var sortablejs = {
     table.find('th').each(function() {
       if ($(this).attr(SORTABLE_ID_ATTR_NAME) == sortableId) {
         $(this).removeClass(CLASS_DESCENDING);
+      } else {
+        sortablejs.resetSortedClasses($(this));
       }
     });
-    console.log('default sort not yet implemented.');
+    var sortedList = sortablejs.sortableColumns[sortableId].slice();
+    sortablejs.orderTable(table, sortedList);
   }
 
 , orderTable: function(table, referenceList) {
@@ -108,8 +115,15 @@ var sortablejs = {
       currentText = this;
       ///console.log('' + this);
       table.find('td').each(function() {
+        var tdText;
         //console.log(currentText + ': ' + $(this).text());
-        if ($(this).text().toLowerCase() == currentText) {
+        if ($(this).attr(SORTABLE_DATA_ATTR_NAME) == undefined) {
+          tdText = $(this).text().toLowerCase();
+        } else {
+          tdText = $(this).attr(SORTABLE_DATA_ATTR_NAME).toLowerCase();
+        }
+
+        if (tdText == currentText) {
           if (previousTr == undefined) {
             previousTr = $(this).parent('tr');  
           } else {
@@ -122,6 +136,6 @@ var sortablejs = {
   }
 };
 
-!function($) {
+!(function() {
   sortablejs.init();
-} (window.jquery);
+} ());
